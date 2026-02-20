@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
-import "./Navbar.css";
+import "./navbar.css";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
