@@ -77,8 +77,8 @@ const styles = {
   },
   plane: {
     position: "absolute",
-    top: "-20px",
-    fontSize: "22px",
+    top: "-0px",
+    fontSize: "10px",
     transition: "left 0.5s ease",
   },
   text: {

@@ -37,14 +37,17 @@ const Navbar = () => {
           <li>
             <NavLink to='/' onClick={() => setMenuOpen(false)}>Inicio</NavLink>
           </li>
-          {/* <li>
+          <li>
             <NavLink to='/entradas' onClick={() => setMenuOpen(false)}>Entradas</NavLink>
-          </li> */}
+          </li>
           {/* <li>
             <NavLink to='/dates' onClick={() => setMenuOpen(false)}>Dates</NavLink>
           </li> */}
           <li>
             <NavLink to='/notinhas' onClick={() => setMenuOpen(false)}>Recados</NavLink>
+          </li>
+          <li>
+            <NavLink to='/filmezinhos' onClick={() => setMenuOpen(false)}>Filmes e Seriados</NavLink>
           </li>
         </ul>
       </div>

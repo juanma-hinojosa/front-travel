@@ -6,6 +6,7 @@ import Navbar from './Components/nav/NavbarComponent'
 // import DatesPage from './pages/DatePage'
 import LoveNotePageManager from './pages/NotesPage'
 import Footer from './Components/FooterComponent'
+import FilmesPage from './pages/FilmesPage'
 
 function App() {
   // https://back-travel.onrender.com
@@ -17,6 +18,8 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/entradas' element={<EntradasPage />} />
         {/* <Route path='/dates' element={<DatesPage />} /> */}
+
+        <Route path='/filmezinhos' element={<FilmesPage />} />        
         <Route path='/notinhas' element={<LoveNotePageManager />} />
       </Routes>
       <Footer />
