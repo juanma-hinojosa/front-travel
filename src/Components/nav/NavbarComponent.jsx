@@ -37,9 +37,9 @@ const Navbar = () => {
           <li>
             <NavLink to='/' onClick={() => setMenuOpen(false)}>Inicio</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to='/entradas' onClick={() => setMenuOpen(false)}>Entradas</NavLink>
-          </li>
+          </li> */}
           {/* <li>
             <NavLink to='/dates' onClick={() => setMenuOpen(false)}>Dates</NavLink>
           </li> */}
