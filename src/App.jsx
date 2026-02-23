@@ -8,6 +8,9 @@ import LoveNotePageManager from './pages/NotesPage'
 import Footer from './Components/FooterComponent'
 import FilmesPage from './pages/FilmesPage'
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   // https://back-travel.onrender.com
 
@@ -23,6 +26,12 @@ function App() {
         <Route path='/notinhas' element={<LoveNotePageManager />} />
       </Routes>
       <Footer />
+
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        // theme="dark"
+      />
     </BrowserRouter>
   )
 }

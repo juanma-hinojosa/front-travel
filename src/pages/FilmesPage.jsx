@@ -2,8 +2,9 @@ import { useState } from "react";
 import SearchMovies from "../Components/filmes/SearchMovies";
 import FavoritesList from "../Components/filmes/FavoritesList";
 
+
 function FilmesPage() {
-  const [view, setView] = useState("search");
+  const [view, setView] = useState("favorites");
   const [refresh, setRefresh] = useState(false);
 
   return (
@@ -13,17 +14,6 @@ function FilmesPage() {
       {/* Botones de navegación */}
       <div style={{ marginBottom: "20px" }}>
         <button
-          onClick={() => setView("search")}
-          style={{
-            marginRight: "10px",
-            background: view === "search" ? "#111" : "#ccc",
-            color: view === "search" ? "#fff" : "#000",
-          }}
-        >
-          Buscar Películas
-        </button>
-
-        <button
           onClick={() => setView("favorites")}
           style={{
             background: view === "favorites" ? "#111" : "#ccc",
@@ -31,6 +21,16 @@ function FilmesPage() {
           }}
         >
           Ver Favoritos
+        </button>
+        <button
+          onClick={() => setView("search")}
+          style={{
+            marginRight: "10px",
+            background: view === "search" ? "#111" : "#ccc",
+            color: view === "search" ? "#fff" : "#000",
+          }}
+        >
+          Buscar Filmes
         </button>
       </div>
 

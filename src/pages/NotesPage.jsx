@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const API_URL = "https://back-travel.onrender.com/api/love-notes";
 
@@ -10,7 +11,7 @@ const LoveNotePageManager = () => {
     nota: "",
   });
   const [editingId, setEditingId] = useState(null);
-  const [view, setView] = useState("list"); // 👈 NUEVO ESTADO
+  const [view, setView] = useState("list");
   const [loading, setLoading] = useState(false);
 
   // ==========================
@@ -23,7 +24,7 @@ const LoveNotePageManager = () => {
       const data = await res.json();
       setNotes(data);
     } catch (error) {
-      console.error("Error al obtener notas:", error);
+      toast.error("Error al obtener notas 💔");
     } finally {
       setLoading(false);
     }
@@ -61,12 +62,18 @@ const LoveNotePageManager = () => {
 
       if (!res.ok) throw new Error("Error en la petición");
 
+      if (editingId) {
+        toast.success("Nota actualizada ✨");
+      } else {
+        toast.success("Nota creada 💌");
+      }
+
       setForm({ de: "", para: "", nota: "" });
       setEditingId(null);
       fetchNotes();
-      setView("list"); // 👈 vuelve a lista al guardar
+      setView("list");
     } catch (error) {
-      console.error("Error al guardar:", error);
+      toast.error("Error al guardar la nota ❌");
     }
   };
 
@@ -80,28 +87,37 @@ const LoveNotePageManager = () => {
       nota: note.nota,
     });
     setEditingId(note._id);
-    setView("create"); // 👈 cambia a vista formulario
+    setView("create");
   };
 
   // ==========================
   // ELIMINAR
   // ==========================
   const handleDelete = async (id) => {
-    if (!window.confirm("¿Seguro que quieres eliminar esta nota?")) return;
+    const confirmDelete = window.confirm(
+      "¿Seguro que quieres eliminar esta nota?"
+    );
+    if (!confirmDelete) return;
 
     try {
-      await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+      const res = await fetch(`${API_URL}/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) throw new Error();
+
+      toast.success("Nota eliminada 🗑️");
       fetchNotes();
     } catch (error) {
-      console.error("Error al eliminar:", error);
+      toast.error("Error al eliminar ❌");
     }
   };
 
   return (
     <div style={styles.container}>
-      <h1 className="playwrite-at-title" >💌 Recadinhos e Cartas</h1>
+      <h1 className="playwrite-at-title">💌 Recadinhos e Cartas</h1>
 
-      {/* BOTONES DE CAMBIO DE VISTA */}
+      {/* BOTONES */}
       <div style={styles.nav}>
         <button
           onClick={() => setView("list")}
@@ -122,7 +138,7 @@ const LoveNotePageManager = () => {
       </div>
 
       {/* ===================== */}
-      {/* VISTA LISTA */}
+      {/* LISTA */}
       {/* ===================== */}
       {view === "list" && (
         <>
@@ -138,6 +154,7 @@ const LoveNotePageManager = () => {
                 <p><strong>De:</strong> {note.de}</p>
                 <p><strong>Para:</strong> {note.para}</p>
                 <p>{note.nota}</p>
+
                 <div style={styles.actions}>
                   <button onClick={() => handleEdit(note)}>
                     Alterar
@@ -153,7 +170,7 @@ const LoveNotePageManager = () => {
       )}
 
       {/* ===================== */}
-      {/* VISTA FORMULARIO */}
+      {/* FORM */}
       {/* ===================== */}
       {view === "create" && (
         <>
@@ -198,7 +215,7 @@ const styles = {
     maxWidth: "600px",
     margin: "40px auto",
     fontFamily: "Arial",
-    padding:'0px 20px'
+    padding: "0px 20px",
   },
   nav: {
     display: "flex",
