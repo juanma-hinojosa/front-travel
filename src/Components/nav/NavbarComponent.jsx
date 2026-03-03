@@ -49,6 +49,10 @@ const Navbar = () => {
           <li>
             <NavLink to='/filmezinhos' onClick={() => setMenuOpen(false)}>Filmes e Seriados</NavLink>
           </li>
+
+          <li>
+            <NavLink to='/aniversario' onClick={() => setMenuOpen(false)}>O Grande Dia</NavLink>
+          </li>
         </ul>
       </div>
     </nav>

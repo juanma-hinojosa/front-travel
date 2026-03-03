@@ -10,6 +10,7 @@ import FilmesPage from './pages/FilmesPage'
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AniversarioPage from './pages/AniversarioPage'
 
 function App() {
   // https://back-travel.onrender.com
@@ -22,6 +23,7 @@ function App() {
         <Route path='/entradas' element={<EntradasPage />} />
         {/* <Route path='/dates' element={<DatesPage />} /> */}
 
+        <Route path='/aniversario' element={<AniversarioPage />} />
         <Route path='/filmezinhos' element={<FilmesPage />} />        
         <Route path='/notinhas' element={<LoveNotePageManager />} />
       </Routes>
